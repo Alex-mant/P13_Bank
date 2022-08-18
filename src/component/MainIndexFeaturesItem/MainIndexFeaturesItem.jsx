@@ -1,7 +1,7 @@
 import React from "react";
 import './styles.scss';
 
-const FeatureItem = ({imageURL, title, text}) => {
+const MainIndexFeaturesItem = ({imageURL, title, text}) => {
   return (
     <div className="feature-item">
       <img src={imageURL} alt="Chat Icon" className="feature-icon" />
@@ -11,4 +11,4 @@ const FeatureItem = ({imageURL, title, text}) => {
   );
 };
 
-export default FeatureItem;
+export default MainIndexFeaturesItem;
