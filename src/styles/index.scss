@@ -14,10 +14,14 @@ body {
 }
 
 .main {
+  display: flex;
+  align-items: baseline;
   flex: 1;
 }
 
 .bg-dark {
+  min-height: calc(100vh - 140px);
+  max-height: max-content;
   background-color: #12002b;
 }
 

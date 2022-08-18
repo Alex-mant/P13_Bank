@@ -1,10 +1,10 @@
 import React from 'react';
-import Main from '../component/Main/Main';
+import MainIndex from '../component/MainIndex/MainIndex';
 
 const Index = () => {
   return (
     <>
-      <Main/>
+      <MainIndex/>
     </>
   );
 }

@@ -1,9 +1,8 @@
-import FeatureItem from "../component/FeatureItem/FeatureItem";
+import { featureItemContent } from "../datas/mainIndexFeatureItemContent";
+import MainIndexFeaturesItem from "../component/MainIndexFeaturesItem/MainIndexFeaturesItem";
 
-let key = 0;
-
-export const setFeatureItem = (featureItemContent) => {
-  return featureItemContent.map((item) => {
-    return <FeatureItem title={item.title} imageURL={item.imageURL} text={item.text} key={key++}/>;
+export const setFeatureItem = () => {
+  return featureItemContent.map((item, index) => {
+    return <MainIndexFeaturesItem key={index} {...item}/>;
   });
 };

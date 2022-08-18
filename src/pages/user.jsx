@@ -1,10 +1,10 @@
 import React from 'react';
-import MainUserPage from '../component/MainUserPage/MainUserPage';
+import MainUser from '../component/MainUser/MainUser';
 
 const User = () => {
   return (
     <>
-      <MainUserPage/>
+      <MainUser/>
     </>
   );
 }
