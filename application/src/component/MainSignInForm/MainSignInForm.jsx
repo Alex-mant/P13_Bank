@@ -10,7 +10,7 @@ const MainSignInForm = () => {
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" />
+        <input type="current-password" id="password" />
       </div>
       <div className="input-remember">
         <input type="checkbox" id="remember-me" />
