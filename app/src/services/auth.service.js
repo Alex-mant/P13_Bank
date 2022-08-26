@@ -37,3 +37,7 @@ export const login = (username, password, setToken, navigate) => {
   })
   return true
 }
+
+export const logout = () => {
+  localStorage.removeItem('user');
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ArgentBankLogo from "../../assets/img/argentBankLogo.png";
+import { logout } from "../../services/auth.service";
 import "./styles.scss";
 
 const Nav = () => {
@@ -18,7 +19,7 @@ const Nav = () => {
               Sign In
             </Link>
           :
-          <Link className="main-nav-item" to={{pathname: "/signIn"}} onClick={() => {localStorage.removeItem('user')}}>
+          <Link className="main-nav-item" to={{pathname: "/signIn"}} onClick={() => {logout()}}>
             <i className="fa fa-sign-out"></i>
             Sign Out
           </Link>        
