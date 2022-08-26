@@ -1,5 +1,6 @@
 import React from 'react';
-import MainSignIn from '../component/MainSignIn/MainSignIn';
+import MainSignIn from '../components/MainSignIn/MainSignIn';
+
 
 const SignIn = () => {
   return (

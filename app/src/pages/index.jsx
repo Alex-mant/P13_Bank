@@ -1,5 +1,5 @@
 import React from 'react';
-import MainIndex from '../component/MainIndex/MainIndex';
+import MainIndex from '../components/MainIndex/MainIndex';
 
 const Index = () => {
   return (
