@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MainUser from '../components/MainUser/MainUser';
 
-const User = () => {
+const User = ({userDataStorage}) => {
   const [token, setToken] = useState(localStorage.user)
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const User = () => {
 
   return (
     <>
-      <MainUser/>
+      <MainUser userDataStorage={userDataStorage}/>
     </>
   );
 }

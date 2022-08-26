@@ -1,12 +1,12 @@
 import './styles.scss';
 
-const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheButtonEditNameClicked, setuserInfoName}) => {
+const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheButtonEditNameClicked, setUserFullName}) => {
 
   const save = () => {
-    const name = document.querySelector(".nameInput").value;
-    const surname = document.querySelector(".surnameInput").value;
+    const firstName = document.querySelector(".nameInput").value;
+    const lastName = document.querySelector(".surnameInput").value;
     
-    setuserInfoName(name +' '+surname);
+    setUserFullName({firstName: firstName, lastName: lastName});
     setisTheButtonEditNameClicked(false);   
   }
 

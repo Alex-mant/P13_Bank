@@ -3,15 +3,20 @@ import MainUserHeaderEditSaveOrCancel from "../MainUserHeaderEditSaveOrCancel/Ma
 import MainUserHeaderInfoName from "../MainUserHeaderInfoName/MainUserHeaderInfoName";
 import './styles.scss';
 
-const MainUserHeader = () => {
+const MainUserHeader = ({userDataStorage}) => {
   const [isTheButtonNameEditClicked, setisTheButtonEditNameClicked] = useState(false);
-  const [userInfoName, setuserInfoName] = useState('Tony Jarvis');
+  const data = userDataStorage?.body
+  const [userFullName, setUserFullName] = useState({
+    firstName : data?.firstName,
+    lastName : data?.lastName
+  })
+ 
 
   return (
     <div className="header">
       <h1> Welcome back </h1>
-      <MainUserHeaderInfoName isTheButtonNameEditClicked={isTheButtonNameEditClicked} userInfoName={userInfoName}/>
-      <MainUserHeaderEditSaveOrCancel isTheButtonNameEditClicked={isTheButtonNameEditClicked} setisTheButtonEditNameClicked={setisTheButtonEditNameClicked} setuserInfoName={setuserInfoName} />
+      <MainUserHeaderInfoName isTheButtonNameEditClicked={isTheButtonNameEditClicked} userInfoName={userFullName.firstName + ' ' + userFullName.lastName}/>
+      <MainUserHeaderEditSaveOrCancel isTheButtonNameEditClicked={isTheButtonNameEditClicked} setisTheButtonEditNameClicked={setisTheButtonEditNameClicked} setUserFullName={setUserFullName} />
     </div>
   );
 };

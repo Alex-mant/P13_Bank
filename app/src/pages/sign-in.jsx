@@ -2,10 +2,10 @@ import React from 'react';
 import MainSignIn from '../components/MainSignIn/MainSignIn';
 
 
-const SignIn = () => {
+const SignIn = ({setUserDataStorage}) => {
   return (
     <>
-      <MainSignIn/>
+      <MainSignIn setUserDataStorage={setUserDataStorage}/>
     </>
   );
 }

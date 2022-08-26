@@ -12,13 +12,14 @@ export const register = (firstName, lastName, email, password) => {
   });
 };
 
-export const login = (username, password, setToken, navigate) => {
+export const login = (username, password, setToken, navigate, storage) => {
+
   axios.post(API_BASE_URL + 'login',{ email: username, password})
   .then((res) => {
     setToken(res.data.body.token);
     if(res.data.body.token){
       localStorage.setItem("user", JSON.stringify(res.data))
-      navigate("/user/profile")
+      getUserData(res, navigate, storage)
     }
   })
   .catch((err) => {
@@ -36,6 +37,18 @@ export const login = (username, password, setToken, navigate) => {
     }
   })
   return true
+}
+
+const getUserData = (res, navigate, storage) => {
+  axios.defaults.headers.common['Authorization'] = 'Bearer' + res.data.body.token
+  axios.post(API_BASE_URL + 'profile')
+  .then((resProfile) => {
+    storage(resProfile.data);
+    navigate("/user/profile")
+  })
+  .catch((errProfile) => {
+    console.log(errProfile)
+  })
 }
 
 export const logout = () => {

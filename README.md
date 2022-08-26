@@ -8,8 +8,8 @@ assignees: ''
 
 A user should be able to:
 
-- [ ] Navigate to the home page (`/`)
-- [ ] See all placeholder data from mockup
+- [X] Navigate to the home page (`/`)
+- [X] See all placeholder data from mockup
 
 ---
 name: '#2 Login Requirement'
@@ -21,10 +21,10 @@ assignees: ''
 
 A user should be able to:
 
-- [ ] Navigate to the login page (`/login`)
-- [ ] Fill out credentials
-- [ ] Login to the back-end API with JWT tokens for authentication
-- [ ] Successfully navigate to a profile page (`/profile`)
+- [X] Navigate to the login page (`/login`)
+- [X] Fill out credentials
+- [X] Login to the back-end API with JWT tokens for authentication
+- [X] Successfully navigate to a profile page (`/profile`)
 
 
 ---
@@ -37,9 +37,9 @@ assignees: ''
 
 A user should be able to:
 
-- [ ] See the logout button when logged in
-- [ ] Click the logout button
-- [ ] Be returned to the home page (`/`)
+- [X] See the logout button when logged in
+- [X] Click the logout button
+- [X] Be returned to the home page (`/`)
 
 ---
 name: '#4 Privacy Requirement'
@@ -51,9 +51,9 @@ assignees: ''
 
 After successfully logging in, a user should be able to:
 
-- [ ] See their profile page
-- [ ] See their first name on the profile page
-- [ ] See placeholder bank account information
+- [X] See their profile page
+- [X] See their first name on the profile page
+- [X] See placeholder bank account information
 
 ---
 name: '#6 Redux Requirement'

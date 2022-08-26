@@ -4,17 +4,17 @@ import { login } from "../../services/auth.service";
 
 import "./styles.scss";
 
-const MainSignInForm = () => {
+const MainSignInForm = ({setUserDataStorage}) => {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null)
   const navigate = useNavigate();
   
- 
+  
   const handleLogin = (e) => {
     e.preventDefault();
-    login(username, password, setToken, navigate);
+    login(username, password, setToken, navigate, setUserDataStorage);
   }
 
   return (

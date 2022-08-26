@@ -19,7 +19,7 @@ const Nav = () => {
               Sign In
             </Link>
           :
-          <Link className="main-nav-item" to={{pathname: "/signIn"}} onClick={() => {logout()}}>
+          <Link className="main-nav-item" to={{pathname: "/home"}} onClick={() => {logout()}}>
             <i className="fa fa-sign-out"></i>
             Sign Out
           </Link>        
