@@ -5,9 +5,12 @@ import { login } from "../../services/auth.service";
 
 import "./styles.scss";
 
+// {setUserDataStorage} => App.js : prop drilling must change with redux
 const MainSignInForm = ({setUserDataStorage}) => {
-  const emailInput = useRef();
-  const passwordInput = useRef();
+  const inputs = {
+    email : useRef(),
+    password : useRef()
+  }
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null)
   const navigate = useNavigate();
@@ -15,19 +18,19 @@ const MainSignInForm = ({setUserDataStorage}) => {
   
   const handleLogin = (e) => {
     e.preventDefault();
-    login(emailInput, passwordInput, setToken, navigate, setUserDataStorage);
+    login(inputs, setToken, navigate, setUserDataStorage);
   }
 
   return (
     <form onSubmit={handleLogin}>
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
-        <input type="text" id="username" ref={emailInput}/>
+        <input type="text" id="username" ref={inputs.email}/>
         <div className="email-error" style={{color: 'red'}}></div>
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input type="current-password" id="password" ref={passwordInput}/>
+        <input type="current-password" id="password" ref={inputs.password}/>
         <div className="password-error" style={{color: 'red'}}></div>
       </div>
       <div className="input-remember">

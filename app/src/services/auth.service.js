@@ -12,11 +12,11 @@ export const register = (firstName, lastName, email, password) => {
   });
 };
 
-export const login = (email, password, setToken, navigate, storage) => {
+export const login = (inputs, setToken, navigate, storage) => {
   axios
     .post(API_BASE_URL + "login", {
-      email: email.current.value,
-      password: password.current.value,
+      email: inputs.email.current.value,
+      password: inputs.password.current.value,
     })
     .then((res) => {
       setToken(res.data.body.token);
