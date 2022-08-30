@@ -79,4 +79,4 @@ assignees: ''
 
 A user should be able to:
 
-- [X] Edit their profile (first name and last name). - [] This data should be persisted to the database.
+- [X] Edit their profile (first name and last name). - [X] This data should be persisted to the database.
