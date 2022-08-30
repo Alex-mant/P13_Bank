@@ -103,10 +103,10 @@ export const getUserData = (token, dispatch) => {
  * @param token - the token that is stored in the localStorage or sessionStorage (depend to rememberMe value)
  * @param editedUserInfos - {
  */
-export const setUserData = (token, editedUserInfos) => {
+export const setUserData = (token, editedUser) => {
   axios.defaults.headers.common["Authorization"] = "Bearer" + token
-  axios.put(API_BASE_URL + "profile", {body: {
-    firstName : editedUserInfos.firstName,
-    lastName: editedUserInfos.lastName,
-  }})
+  axios.put(API_BASE_URL + "profile",  {
+    firstName : editedUser.firstName,
+    lastName: editedUser.lastName,
+  })
 }
