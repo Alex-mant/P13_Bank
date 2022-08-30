@@ -1,10 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import ArgentBankLogo from "../../assets/img/argentBankLogo.png";
-import { logout } from "../../services/auth.service";
+import { logOut } from "../../feature/loginSlice";
 import "./styles.scss";
 
 const Nav = () => {
+  const location = useLocation().pathname;
+  const dispatch = useDispatch();
+  const firstName = useSelector(state => state.login.firstName)
+
+  useEffect(() => {
+  },[location])
+
   return (   
     <nav className="main-nav">
       <Link className="main-nav-logo" to={{pathname:"/home"}}>
@@ -13,16 +21,22 @@ const Nav = () => {
       </Link>
       <div className="main-nav-container-item">
         {
-          window.location.pathname !== "/user/profile" ?
+          localStorage.user || sessionStorage.user ?
+            <>
+              <Link className="main-nav-item" to={{pathname: "/user/profile"}}>
+                <i className="fa fa-user-circle"></i>
+                {firstName}
+              </Link>
+              <Link className="main-nav-item" to={{pathname: "/home"}} onClick={() => {dispatch(logOut())}}>
+                <i className="fa fa-sign-out"></i>
+                Sign Out
+              </Link>        
+            </>
+          :
             <Link className="main-nav-item" to={{pathname: "/signIn"}}>
               <i className="fa fa-user-circle"></i>
               Sign In
             </Link>
-          :
-          <Link className="main-nav-item" to={{pathname: "/home"}} onClick={() => {logout()}}>
-            <i className="fa fa-sign-out"></i>
-            Sign Out
-          </Link>        
         }
       </div>
     </nav>   

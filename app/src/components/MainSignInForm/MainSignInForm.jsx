@@ -1,39 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
 import {  useNavigate  } from "react-router-dom";
+import { isRememberMe } from "../../feature/loginSlice";
 import { login } from "../../services/auth.service";
 
 import "./styles.scss";
 
-const MainSignInForm = ({setUserDataStorage}) => {
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useState(null)
+const MainSignInForm = () => {
+  const inputs = {
+    email : useRef(),
+    password : useRef(),
+    rememberMe: useRef()
+  }
+  const dispatch = useDispatch()
   const navigate = useNavigate();
-  
   
   const handleLogin = (e) => {
     e.preventDefault();
-    login(username, password, setToken, navigate, setUserDataStorage);
+    login(inputs, dispatch, navigate);
   }
 
   return (
     <form onSubmit={handleLogin}>
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
-        <input type="text" id="username" onChange={(e) => {setUsername(e.target.value)}}/>
+        <input type="text" id="username" ref={inputs.email}/>
         <div className="email-error" style={{color: 'red'}}></div>
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input type="current-password" id="password" onChange={(e) => {setPassword(e.target.value)}}/>
+        <input type="current-password" id="password" ref={inputs.password}/>
         <div className="password-error" style={{color: 'red'}}></div>
       </div>
       <div className="input-remember">
-        <input type="checkbox" id="remember-me" />
+        <input type="checkbox" id="remember-me" ref={inputs.rememberMe} onClick={() => { dispatch(isRememberMe(inputs.rememberMe.current.checked))}}/>
         <label htmlFor="remember-me">Remember me</label>
       </div>
-
       <button className="sign-in-button">Sign In</button>
     </form>
   );
