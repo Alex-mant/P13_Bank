@@ -30,7 +30,7 @@ const MainSignInForm = () => {
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input type="current-password" id="password" ref={inputs.password}/>
+        <input type="password" autoComplete="on" id="password" ref={inputs.password}/>
         <div className="password-error" style={{color: 'red'}}></div>
       </div>
       <div className="input-remember">
