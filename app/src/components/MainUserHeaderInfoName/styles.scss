@@ -1,8 +1,9 @@
 .inputContainer{
-  width: 370px;
+  gap: 15px;
   display: flex;
   justify-content: space-between;
   input{
+    width: 150px;
     height: 30px;
     margin: 30px 0 15px;
   }

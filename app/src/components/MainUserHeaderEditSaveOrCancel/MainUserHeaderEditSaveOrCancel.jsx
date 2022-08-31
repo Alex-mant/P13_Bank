@@ -15,10 +15,10 @@ const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheBu
           onClick={() => {
             setUserData(token, {
               firstName : document.querySelector(".nameInput").value,
-              lastName: document.querySelector(".surnameInput").value
+              lastName: document.querySelector(".lastnameInput").value
             })
             dispatch(getFirstName(document.querySelector(".nameInput").value));
-            dispatch(getLastName(document.querySelector(".surnameInput").value));
+            dispatch(getLastName(document.querySelector(".lastnameInput").value));
             setisTheButtonEditNameClicked(false);
           }}
         >

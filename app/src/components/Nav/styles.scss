@@ -35,3 +35,12 @@
   }
 
 }
+
+@media screen and (max-width: 401px) {
+  .main-nav-container-item{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+}
+
