@@ -1,0 +1,189 @@
+swagger: '2.0'
+info:
+  description: Bank API documentation for the transactions
+  version: 1.0.0
+  title: Argent Bank transactions API doc
+  termsOfService: http://swagger.io/terms/
+host: localhost:3001
+basePath: /v1
+tags:
+  - name: Transactions
+    description: Manage user transactions
+schemes:
+  - http
+paths:
+  /user/transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Retrieve all user transactions
+      description: API for fetching all user transactions
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: The user's transactions has been successfully recovered!
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Send new user transaction(s)
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/Description'
+      responses:
+        '201':
+          description: The user's transactions has been successfully sent!
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal server error
+  /user/transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Retrieve a specific user transaction with the id
+      description: Get transaction infos
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: transactionId
+          required: true
+          type: integer
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: The user's transaction has been successfully recovered!
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '404':
+          description: Transaction not found!
+        '500':
+          description: Internal server error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Edit user transaction
+      description: Update transaction's description
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: transactionId
+          required: true
+          type: integer
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/Description'
+      responses:
+        '200':
+          description: The user's transaction has been successfully updated!
+        '400':
+          description: Invalid Fields
+        '404':
+          description: Transaction not found!
+        '500':
+          description: Internal server error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        $ref: '#/definitions/Transaction'
+  Transaction:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Transaction ID
+      created:
+        type: string
+        description: Transaction date
+      description:
+        type: string
+        description: Transaction description
+      amount:
+        type: number
+        description: Transaction amount
+      balance:
+        type: number
+        description: Account balance after transaction
+      transactionType:
+        type: string
+        description: Transaction type
+      category:
+        type: string
+        description: Transaction category
+      note:
+        type: string
+        description: User's notes for transaction
+  Description:
+    type: object
+    properties:
+      category:
+        type: string
+        description: Transaction's category
+      note:
+        type: string
+        description: User's notes for transaction
