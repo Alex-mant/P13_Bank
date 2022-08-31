@@ -15,10 +15,11 @@ const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheBu
     lastName: useSelector(state => state.login.editedUserInfos.lastName)
   }
 
+  
   /**
-   * If the new value is not null, return the new value, otherwise return the current value.
-   * @returns - If newValue is not null, return newValue
-   *   - If newValue is null, return currValue
+   * If the new value is not null and not an empty string, return the new value, otherwise return the
+   * current value.
+   * @returns the value of the ternary operator.
    */
   const verifIfValueNotNull = (newValue, currValue) => {
     return newValue !== null && newValue !== "" ? newValue : currValue
