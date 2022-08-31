@@ -7,6 +7,10 @@ export const loginSlice = createSlice({
   initialState: {
     firstName: null,
     lastName: null,
+    editedUserInfos: {
+      firstName: null,
+      lastName: null,
+    },
     email: null,
     rememberMe: false,
     token: null,
@@ -18,6 +22,8 @@ export const loginSlice = createSlice({
       state.email = null;
       state.rememberMe = false;
       state.token = null;
+      state.editedUserInfos.firstName = null;
+      state.editedUserInfos.lastName = null;
       localStorage.removeItem("user");
       sessionStorage.removeItem("user");
       axios.defaults.headers.common['Authorization'] = "";
@@ -31,8 +37,14 @@ export const loginSlice = createSlice({
     getFirstName: (state, action) => {
       state.firstName = action.payload
     },
+    getEditedFirstName : (state,action) => {
+      state.editedUserInfos.firstName = action.payload
+    },
     getLastName: (state, action) => {
       state.lastName = action.payload
+    },
+    getEditedLastName: (state, action) => {
+      state.editedUserInfos.lastName = action.payload
     },
     getEmail: (state, action) => {
       state.email = action.payload
@@ -47,6 +59,8 @@ export const {
   getFirstName,
   getLastName,
   getEmail,
+  getEditedFirstName,
+  getEditedLastName,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

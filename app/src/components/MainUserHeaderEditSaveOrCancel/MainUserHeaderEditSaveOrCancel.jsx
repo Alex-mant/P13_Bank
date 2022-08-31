@@ -4,8 +4,25 @@ import { setUserData } from "../../services/auth.service";
 import "./styles.scss";
 
 const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheButtonEditNameClicked }) => {
-  const token = useSelector(state => state.login.token);
   const dispatch = useDispatch();
+  const token = useSelector(state => state.login.token);
+  const currentInfo = {
+    firstName: useSelector(state => state.login.firstName),
+    lastName: useSelector(state => state.login.lastName),
+  }
+  const editedInfo = {
+    firstName : useSelector(state => state.login.editedUserInfos.firstName),
+    lastName: useSelector(state => state.login.editedUserInfos.lastName)
+  }
+
+  /**
+   * If the new value is not null, return the new value, otherwise return the current value.
+   * @returns - If newValue is not null, return newValue
+   *   - If newValue is null, return currValue
+   */
+  const verifIfValueNotNull = (newValue, currValue) => {
+    return newValue !== null && newValue !== "" ? newValue : currValue
+  }
 
   return (  
     <>
@@ -14,11 +31,11 @@ const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheBu
           className="edit-button"
           onClick={() => {
             setUserData(token, {
-              firstName : document.querySelector(".nameInput").value,
-              lastName: document.querySelector(".lastnameInput").value
+              firstName : verifIfValueNotNull(editedInfo.firstName, currentInfo.firstName),
+              lastName: verifIfValueNotNull(editedInfo.lastName, currentInfo.lastName),
             })
-            dispatch(getFirstName(document.querySelector(".nameInput").value));
-            dispatch(getLastName(document.querySelector(".lastnameInput").value));
+            dispatch(getFirstName(verifIfValueNotNull(editedInfo.firstName, currentInfo.firstName)));
+            dispatch(getLastName(verifIfValueNotNull(editedInfo.lastName, currentInfo.lastName)));
             setisTheButtonEditNameClicked(false);
           }}
         >
