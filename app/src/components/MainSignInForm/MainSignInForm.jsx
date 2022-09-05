@@ -8,17 +8,19 @@ import { login } from "../../services/auth.service";
 import "./styles.scss";
 
 const MainSignInForm = () => {
+
   const inputs = {
     email : useRef(),
     password : useRef(),
     rememberMe: useRef()
   }
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const handleLogin = (e) => {
     e.preventDefault();
-    login(inputs, dispatch, navigate);
+    login(inputs, {dispatch, navigate});
   }
 
   return (

@@ -1,7 +1,14 @@
 import axios from "axios";
-import { getEmail, getFirstName, getLastName, getToken } from "../feature/loginSlice";
+import { getEmail, getFirstName, getLastName } from "../feature/loginSlice";
+import { getTokenAndRedirectToProfilePage } from "../utils/getTokenAndRedirectToProfilePage";
 
-const myElement = (element) => document.querySelector(element);
+/**
+ * MyEl is a function that takes an element as an argument and returns the element from the DOM.
+ * @param element - The element you want to select.
+ */
+const myEl = (element) => document.querySelector(element);
+
+/* The base URL for the API. */
 const API_BASE_URL = "http://localhost:3001/api/v1/user/";
 
 /**
@@ -34,27 +41,18 @@ export const register = (firstName, lastName, email, password) => {
  * @param navigate - is a function that redirects to a page
  * @returns The return value is a function that takes three arguments: inputs, dispatch, and navigate.
  */
-export const login = (inputs, dispatch, navigate) => {
-  
-  const getTokenAndRedirectToProfilePage = (res, storageType) => {
-    if (res.data.body.token) {
-      dispatch(getToken(res.data.body.token));
-      storageType.setItem("user", JSON.stringify(res.data));
-      navigate("/user/profile");
-    }
-  };
-  
+export const login = (inputs, hooks) => {
+    
   axios
     .post(API_BASE_URL + "login", {
       email: inputs.email.current.value,
       password: inputs.password.current.value,
-      rememberMe: inputs.rememberMe.current.checked,
     })
     .then((res) => {
       if (inputs.rememberMe.current.checked) {
-        getTokenAndRedirectToProfilePage(res, localStorage)
+        getTokenAndRedirectToProfilePage(res, localStorage, hooks)
       } else {
-        getTokenAndRedirectToProfilePage(res, sessionStorage)
+        getTokenAndRedirectToProfilePage(res, sessionStorage, hooks)
       }
     })
     .catch((err) => {
@@ -62,14 +60,14 @@ export const login = (inputs, dispatch, navigate) => {
       localStorage.removeItem("user");
       sessionStorage.removeItem("user");
       if (error === "Error: User not found!") {
-        myElement(".email-error").innerHTML = error;
-        myElement(".password-error").innerHTML = "";
+        myEl(".email-error").innerHTML = error;
+        myEl(".password-error").innerHTML = "";
       } else {
-        myElement(".email-error").innerHTML = "";
-        myElement(".password-error").innerHTML = error;
+        myEl(".email-error").innerHTML = "";
+        myEl(".password-error").innerHTML = error;
       }
       if (error === "Error: data and hash arguments required") {
-        myElement(".password-error").innerHTML = "Error: Password is required!";
+        myEl(".password-error").innerHTML = "Error: Password is required!";
       }
     });
   return true;
