@@ -1,27 +1,32 @@
-import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getEditedFirstName, getEditedLastName } from '../../feature/loginSlice';
-import './styles.scss';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEditedFirstName, getEditedLastName } from "../../feature/loginSlice";
+import "./styles.scss";
 
-const MainUserHeaderInfoName = ({isTheButtonNameEditClicked, userInfoName}) => {
+const MainUserHeaderInfoName = ({ isTheButtonNameEditClicked, userInfoName }) => {
   const currentUserInfo = {
-    firstName: useSelector(state => state.login.firstName),
-    lastName: useSelector(state => state.login.lastName)
-  }
-
-  const editedFirstName = useRef()
-  const editedLastName = useRef()
+    firstName: useSelector((state) => state.login.firstName),
+    lastName: useSelector((state) => state.login.lastName),
+  };
 
   const dispatch = useDispatch();
 
-  return(
+  const handleBlur = (el) => {
+    el.target.classList.contains("firstNameInput")
+      ? dispatch(getEditedFirstName(el.target.value))
+      : dispatch(getEditedLastName(el.target.value))
+    ;
+  };
+
+  return (
     <>
-      <div className="inputContainer" style={{display : isTheButtonNameEditClicked ? 'flex' : 'none'}}>
-        <input ref={editedFirstName} onBlur={() => {dispatch(getEditedFirstName(editedFirstName.current.value))}} className='nameInput' type='text' placeholder={currentUserInfo.firstName}/>
-        <input ref={editedLastName} onBlur={() => {dispatch(getEditedLastName(editedLastName.current.value))}} className='lastnameInput' type='text'placeholder={currentUserInfo.lastName}/>
+      <div className="inputContainer" style={{ display: isTheButtonNameEditClicked ? "flex" : "none" }}>
+        <input onBlur={handleBlur.bind(this)} className="firstNameInput" type="text" placeholder={currentUserInfo.firstName} />
+        <input onBlur={handleBlur.bind(this)} className="lastNameInput" type="text" placeholder={currentUserInfo.lastName} />
       </div>
-      <h2 style={{display : isTheButtonNameEditClicked ? 'none' : 'block'}}>{userInfoName + '!'}</h2>
+      <h2 style={{ display: isTheButtonNameEditClicked ? "none" : "block" }}>{userInfoName + "!"}</h2>
     </>
-  )}
+  );
+};
 
 export default MainUserHeaderInfoName;

@@ -2,7 +2,6 @@ import React from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import {  useNavigate  } from "react-router-dom";
-import { isRememberMe } from "../../feature/loginSlice";
 import { login } from "../../services/auth.service";
 
 import "./styles.scss";
@@ -36,7 +35,7 @@ const MainSignInForm = () => {
         <div className="password-error" style={{color: 'red'}}></div>
       </div>
       <div className="input-remember">
-        <input type="checkbox" id="remember-me" ref={inputs.rememberMe} onClick={() => { dispatch(isRememberMe(inputs.rememberMe.current.checked))}}/>
+        <input type="checkbox" id="remember-me" ref={inputs.rememberMe}/>
         <label htmlFor="remember-me">Remember me</label>
       </div>
       <button className="sign-in-button">Sign In</button>

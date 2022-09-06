@@ -12,7 +12,6 @@ export const loginSlice = createSlice({
       lastName: null,
     },
     email: null,
-    rememberMe: false,
     token: null,
   },
   reducers:{ 
@@ -27,9 +26,6 @@ export const loginSlice = createSlice({
       localStorage.removeItem("user");
       sessionStorage.removeItem("user");
       axios.defaults.headers.common['Authorization'] = "";
-    },
-    isRememberMe: (state, action) => {
-      state.rememberMe = action.payload
     },
     getToken: (state, action) => {
       state.token = action.payload
@@ -54,7 +50,6 @@ export const loginSlice = createSlice({
 
 export const {
   logOut,
-  isRememberMe,
   getToken,
   getFirstName,
   getLastName,
