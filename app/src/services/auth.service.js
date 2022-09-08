@@ -29,17 +29,16 @@ export const register = (firstName, lastName, email, password) => {
   });
 };
 
+
 /**
- * It takes in an object of inputs, a dispatch function, and a navigate function. It then makes an
- * axios post request to the server, and if the request is successful, it will dispatch an action to
- * set the token in the redux store, and then it will set the user in either localStorage or
- * sessionStorage depending on the value of the rememberMe input. Finally, it will navigate to the
- * profile page.
- * 
- * @param inputs - an object containing the refs of the inputs
- * @param dispatch - is a function that dispatches an action to the reducer.
- * @param navigate - is a function that redirects to a page
- * @returns The return value is a function that takes three arguments: inputs, dispatch, and navigate.
+ * It takes in two arguments, inputs and hooks, and then it makes an axios post request to the login
+ * route, and then it checks if the remember me checkbox is checked, and if it is, it calls the
+ * getTokenAndRedirectToProfilePage function and passes in the response, localStorage, and hooks as
+ * arguments, and if it isn't, it calls the getTokenAndRedirectToProfilePage function and passes in the
+ * response, sessionStorage, and hooks as arguments.
+ * @param inputs - an object containing the refs of the input fields
+ * @param hooks - is an object that contains the following: {dispatch, navigate}
+ * @returns The return value is a boolean.
  */
 export const login = (inputs, hooks) => {
     

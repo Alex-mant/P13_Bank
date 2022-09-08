@@ -1,6 +1,6 @@
 import React from "react";
 import './styles.scss';
-import MainSignInForm from "../MainSignInForm/MainSignInForm";
+import Form from "../Form/Form";
 
 const MainSignIn = ({setUserDataStorage}) => {
   
@@ -9,7 +9,7 @@ const MainSignIn = ({setUserDataStorage}) => {
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <MainSignInForm setUserDataStorage = {setUserDataStorage}/>
+        <Form setUserDataStorage = {setUserDataStorage}/>
       </section>
     </main>
   );

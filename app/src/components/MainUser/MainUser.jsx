@@ -1,8 +1,8 @@
 import React from "react";
 import './styles.scss';
-import MainUserHeader from "../MainUserHeader/MainUserHeader";
-import MainUserAccountSection from "../MainUserAccountSection/MainUserAccountSection";
-import { accounts } from "../../data/mainUserAccounts";
+import UserHeader from "../UserHeader/UserHeader";
+import AccountSection from "../AccountSection/AccountSection";
+import { UserAccounts } from "../../data/UserAccounts";
 
 
 const MainUser = () => {
@@ -10,9 +10,9 @@ const MainUser = () => {
 
   return (
     <main className="main bg-dark mainUser">
-      <MainUserHeader />
+      <UserHeader />
       <h2 className="sr-only">Accounts</h2>
-      {accounts.map((account, index) => <MainUserAccountSection key={index} {...account} />)}
+      {UserAccounts.map((account, index) => <AccountSection key={index} {...account} />)}
     </main>
   );
 };

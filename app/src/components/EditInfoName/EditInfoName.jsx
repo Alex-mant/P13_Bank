@@ -3,7 +3,7 @@ import { getFirstName, getLastName } from "../../feature/loginSlice";
 import { setUserData } from "../../services/auth.service";
 import "./styles.scss";
 
-const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheButtonEditNameClicked }) => {
+const EditInfoName = ({ isTheButtonNameEditClicked, setisTheButtonEditNameClicked }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.login.token);
   const currentInfo = {
@@ -46,4 +46,4 @@ const MainUserHeaderEditSaveOrCancel = ({ isTheButtonNameEditClicked, setisTheBu
   );
 };
 
-export default MainUserHeaderEditSaveOrCancel;
+export default EditInfoName;

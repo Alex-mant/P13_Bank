@@ -6,7 +6,7 @@ import { login } from "../../services/auth.service";
 
 import "./styles.scss";
 
-const MainSignInForm = () => {
+const Form = () => {
 
   const inputs = {
     email : useRef(),
@@ -43,4 +43,4 @@ const MainSignInForm = () => {
   );
 };
 
-export default MainSignInForm;
+export default Form;

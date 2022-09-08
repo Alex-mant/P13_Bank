@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEditedFirstName, getEditedLastName } from "../../feature/loginSlice";
 import "./styles.scss";
 
-const MainUserHeaderInfoName = ({ isTheButtonNameEditClicked, userInfoName }) => {
+const InputEditInfo = ({ isTheButtonNameEditClicked, userInfoName }) => {
   const currentUserInfo = {
     firstName: useSelector((state) => state.login.firstName),
     lastName: useSelector((state) => state.login.lastName),
@@ -29,4 +29,4 @@ const MainUserHeaderInfoName = ({ isTheButtonNameEditClicked, userInfoName }) =>
   );
 };
 
-export default MainUserHeaderInfoName;
+export default InputEditInfo;

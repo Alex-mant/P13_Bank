@@ -1,7 +1,7 @@
 import React from "react";
 import './styles.scss';
 
-const MainIndexHero = () => {
+const Hero = () => {
   return (
     <div className="hero">
       <section className="hero-content">
@@ -15,4 +15,4 @@ const MainIndexHero = () => {
   );
 };
 
-export default MainIndexHero;
+export default Hero;

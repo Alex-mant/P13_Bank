@@ -1,13 +1,13 @@
 import React from 'react';
-import MainIndexFeatures from '../MainIndexFeatures/MainIndexFeatures';
-import MainIndexHero from '../MainIndexHero/MainIndexHero';
+import Features from '../Features/Features';
+import Hero from '../Hero/Hero';
 import './styles.scss'
 
 const MainIndex = () => {
   return (
     <main>
-      <MainIndexHero/>
-      <MainIndexFeatures/>
+      <Hero/>
+      <Features/>
     </main>
   );
 }

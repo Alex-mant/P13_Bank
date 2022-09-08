@@ -1,7 +1,7 @@
 import React from "react";
 import './styles.scss';
 
-const MainUserAccountSection = ({title, amount, desc}) => {
+const AccountSection = ({title, amount, desc}) => {
   return (
     <section className="account">
       <div className="account-content-wrapper">
@@ -16,4 +16,4 @@ const MainUserAccountSection = ({title, amount, desc}) => {
   );
 };
 
-export default MainUserAccountSection;
+export default AccountSection;
