@@ -14,7 +14,7 @@ function App() {
         <Router>
           <Nav/>
             <Routes>
-              <Route exact path="/home" element={<Index/>} />
+              <Route exact path="/" element={<Index/>} />
               <Route path="/signIn" element={<SignIn/>} />
               <Route path="/user/profile" element={<User/>} />
             </Routes>

@@ -18,8 +18,8 @@ paths:
         - Bearer: []
       tags:
         - Transactions
-      summary: Retrieve all user transactions
-      description: API for fetching all user transactions
+      summary: Retrieve all user transactions of current month
+      description: API for fetching all user transactions of current month
       produces:
         - application/json
       parameters:
@@ -44,7 +44,7 @@ paths:
         - Bearer: []
       tags:
         - Transactions
-      summary: Send new user transaction(s)
+      summary: Send new user transaction(s) 
       description: ''
       consumes:
         - application/json
@@ -75,7 +75,7 @@ paths:
         - Bearer: []
       tags:
         - Transactions
-      summary: Retrieve a specific user transaction with the id
+      summary: Retrieve a specific user transaction of current month with the id
       description: Get transaction infos
       produces:
         - application/json
@@ -105,7 +105,7 @@ paths:
         - Bearer: []
       tags:
         - Transactions
-      summary: Edit user transaction
+      summary: Edit an user transaction of current month
       description: Update transaction's description
       produces:
         - application/json

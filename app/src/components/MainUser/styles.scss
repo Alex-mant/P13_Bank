@@ -1,3 +1,5 @@
+$AccessibilityColorBtn : rgb(7, 71, 48);
+
 .mainUser{
   align-items: center;
   flex-direction: column;
@@ -43,8 +45,8 @@
 .edit-button {
   width: 90px;
   align-self: center;
-  border-color: #00bc77;
-  background-color: #00bc77;
+  border-color: $AccessibilityColorBtn;
+  background-color: $AccessibilityColorBtn;
   color: #fff;
   font-weight: bold;
   padding: 10px;
@@ -62,8 +64,8 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1rem;
-  border-color: #00bc77;
-  background-color: #00bc77;
+  border-color: $AccessibilityColorBtn;
+  background-color: $AccessibilityColorBtn;
   color: #fff;
 }
 

@@ -15,7 +15,7 @@ const Nav = () => {
 
   return (   
     <nav className="main-nav">
-      <Link className="main-nav-logo" to={{pathname:"/home"}}>
+      <Link className="main-nav-logo" to={{pathname:"/"}}>
         <img className="main-nav-logo-image" src={ArgentBankLogo} alt="Argent Bank Logo" />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
@@ -27,7 +27,7 @@ const Nav = () => {
                 <i className="fa fa-user-circle"></i>
                 {firstName}
               </Link>
-              <Link className="main-nav-item" to={{pathname: "/home"}} onClick={() => {dispatch(logOut())}}>
+              <Link className="main-nav-item" to={{pathname: "/"}} onClick={() => {dispatch(logOut())}}>
                 <i className="fa fa-sign-out"></i>
                 Sign Out
               </Link>        
