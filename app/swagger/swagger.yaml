@@ -8,7 +8,7 @@ host: localhost:3001
 basePath: /v1
 tags:
   - name: Transactions
-    description: Manage user transactions
+    description: Manage user transactions for the current month
 schemes:
   - http
 paths:
